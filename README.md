@@ -1,4 +1,7 @@
-# Store Inventory Management API
+# Store Inventory and Suppliers  Management API
+### This application will be used to manage inventory and suppliers of an online store.
+### This API will be utilized by various internal systems, 
+### including the front-end interface and the inventory tracking system
 
 ## Setup Instructions
 
