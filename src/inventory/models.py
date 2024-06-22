@@ -3,14 +3,14 @@ from django.db import models
 
 class Contact(models.Model):
     address = models.CharField(max_length=255)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15, unique=True)
     email = models.EmailField(max_length=155)
 
     def __str__(self):
         return self.email
 
 class Supplier(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     contact_info = models.OneToOneField(Contact, related_name="contact", on_delete=models.CASCADE)
 
     def __str__(self):
