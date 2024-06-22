@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #...Third Party
     "rest_framework",
     'drf_spectacular',
+    "phonenumber_field",
     #...Local
     "inventory",
 ]

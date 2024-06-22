@@ -14,22 +14,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 from inventory import views
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-
-router = DefaultRouter()
-router.register(r'items', views.ItemViewSet)
-router.register(r'suppliers', views.SupplierViewSet)
-
 urlpatterns = [
-	path("admin/", admin.site.urls),
-	path('api/', include(router.urls)),
-	path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-	path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-	path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-
+    path('admin/', admin.site.urls),
+    path('api/contacts/', views.ContactListCreateAPIView.as_view(), name='contact-list-create'),
+    path('api/contacts/<int:pk>/', views.ContactRetrieveUpdateDestroyAPIView.as_view(), name='contact-detail'),
+    path('api/suppliers/', views.SupplierListCreateAPIView.as_view(), name='supplier-list-create'),
+    path('api/suppliers/<int:pk>/', views.SupplierRetrieveUpdateDestroyAPIView.as_view(), name='supplier-detail'),
+    path('api/items/', views.ItemListCreateAPIView.as_view(), name='item-list-create'),
+    path('api/items/<int:pk>/', views.ItemRetrieveUpdateDestroyAPIView.as_view(), name='item-detail'),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
