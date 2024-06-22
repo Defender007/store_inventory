@@ -7,7 +7,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=155)
 
     def __str__(self):
-        return self.name
+        return self.email
 
 class Supplier(models.Model):
     name = models.CharField(max_length=255)
